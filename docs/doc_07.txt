@@ -1,0 +1,9 @@
+SAMPLE POLICY CORPUS — Gift Cards
+This document is synthetic content created for the Zepto GenAI Support Assistant assignment/demo. It is not an official Zepto policy.
+
+Gift cards:
+Gift cards can be used according to the terms shown with the gift card at the time of purchase or redemption.
+Redemption:
+The customer should enter the gift card details in the supported redemption flow.
+Issues:
+If a gift card does not work, the customer should verify the code and applicable terms and contact support if the issue continues.

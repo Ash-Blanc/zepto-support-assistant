@@ -1,0 +1,9 @@
+SAMPLE POLICY CORPUS — Order Cancellation Policy
+This document is synthetic content created for the Zepto GenAI Support Assistant assignment/demo. It is not an official Zepto policy.
+
+Cancellation:
+An order may be cancellable only while it is in an eligible stage of processing.
+After processing:
+Once an order has progressed too far into preparation or delivery, cancellation may no longer be available.
+How to check:
+Customers should open the order and use the available cancellation option, if shown.

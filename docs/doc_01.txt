@@ -1,0 +1,9 @@
+SAMPLE POLICY CORPUS — Delivery Policy
+This document is synthetic content created for the Zepto GenAI Support Assistant assignment/demo. It is not an official Zepto policy.
+
+Delivery timing:
+Orders are delivered within the estimated time shown to the customer at checkout. Actual delivery time can vary because of order volume, traffic, weather, or operational conditions.
+Delayed delivery:
+If an order is delayed beyond the displayed estimate, the customer should check Order Tracking first. If help is still needed, the customer can contact customer support.
+Delivery charges:
+Any applicable delivery or handling charges are displayed during checkout before the order is placed.

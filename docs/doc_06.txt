@@ -1,0 +1,9 @@
+SAMPLE POLICY CORPUS — Damaged or Missing Items
+This document is synthetic content created for the Zepto GenAI Support Assistant assignment/demo. It is not an official Zepto policy.
+
+Damaged item:
+If an item arrives damaged, the customer should report the issue through customer support as soon as possible.
+Missing item:
+If an item is missing from an order, the customer should report the missing item through the support flow.
+Resolution:
+Support may request order information and other evidence before deciding the appropriate resolution, which may include a replacement or refund where eligible.

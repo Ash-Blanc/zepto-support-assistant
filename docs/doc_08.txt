@@ -1,0 +1,9 @@
+SAMPLE POLICY CORPUS — Customer Support Hours
+This document is synthetic content created for the Zepto GenAI Support Assistant assignment/demo. It is not an official Zepto policy.
+
+Support:
+Customers can use the in-app customer support flow for order-related assistance.
+Support availability:
+Support availability can vary by service and operational conditions. The application should be treated as the current source for available support options.
+Escalation:
+If the automated support flow does not resolve an issue, the customer should use the available escalation/contact option.

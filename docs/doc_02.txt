@@ -1,0 +1,9 @@
+SAMPLE POLICY CORPUS — Returns & Refunds
+This document is synthetic content created for the Zepto GenAI Support Assistant assignment/demo. It is not an official Zepto policy.
+
+Refund eligibility:
+Refunds may be considered for eligible issues such as an incorrect, damaged, or missing item, subject to verification.
+Refund process:
+The customer should report the issue through the support flow and provide the requested order details or evidence when applicable.
+Refund timing:
+Once a refund is approved, the time for the amount to appear can depend on the payment method or financial institution.

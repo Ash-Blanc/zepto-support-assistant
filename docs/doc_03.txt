@@ -1,0 +1,9 @@
+SAMPLE POLICY CORPUS — Membership Tiers
+This document is synthetic content created for the Zepto GenAI Support Assistant assignment/demo. It is not an official Zepto policy.
+
+Membership:
+Membership benefits depend on the membership tier active on the customer's account.
+Benefits:
+A membership tier may provide benefits such as eligible delivery-related savings or other benefits described for that tier.
+Membership questions:
+Customers can check the membership section of the application for the currently available tier, benefits, and applicable terms.

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zepto Support Assistant</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Zepto Support Assistant</h1>
+
+        <p class="subtitle">Ask me anything about your order</p>
+
+        <div id="chat-box"></div>
+
+        <div class="input-area">
+            <input
+                type="text"
+                id="question"
+                placeholder="Ask your question..."
+            >
+
+            <button onclick="askQuestion()">Send</button>
+        </div>
+
+    </div>
+
+   <script>
+
+    async function askQuestion() {
+
+        const input = document.getElementById("question");
+        const chatBox = document.getElementById("chat-box");
+
+        const question = input.value.trim();
+
+        if (question === "") {
+            return;
+        }
+
+        // Show user's question
+        chatBox.innerHTML += `
+            <div class="message user">
+                <b>You:</b> ${question}
+            </div>
+        `;
+
+        input.value = "";
+
+        // Show loading message
+        const loading = document.createElement("div");
+        loading.className = "message bot";
+        loading.innerHTML = "<b>Assistant:</b> Thinking...";
+        chatBox.appendChild(loading);
+
+        try {
+
+            // Send question to Flask
+            const response = await fetch("/ask", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    question: question
+                })
+            });
+
+            const data = await response.json();
+
+            // Replace Thinking with actual answer
+            loading.innerHTML = `
+                <b>Assistant:</b> ${data.answer}
+            `;
+
+        } catch (error) {
+
+            loading.innerHTML = `
+                <b>Assistant:</b> Sorry, something went wrong.
+            `;
+
+            console.error(error);
+        }
+    }
+
+
+    // Press Enter to send
+    document.getElementById("question").addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+            askQuestion();
+        }
+
+    });
+
+</script>
+</body>
+</html>

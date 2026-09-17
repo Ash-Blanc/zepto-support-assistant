@@ -1,0 +1,9 @@
+SAMPLE POLICY CORPUS — Order Tracking
+This document is synthetic content created for the Zepto GenAI Support Assistant assignment/demo. It is not an official Zepto policy.
+
+Tracking:
+Customers can use the Order Tracking section to view the current status of an order.
+Order status:
+The tracking status may change as the order moves through preparation, dispatch, and delivery.
+Delayed order:
+If tracking has not changed for an unusually long period, the customer should contact support with the order details.
