@@ -1,5 +1,6 @@
 __pycache__/
 *.pyc
-.env
 vector_store/
 *.sqlite3
+config.bat
+node_modules
