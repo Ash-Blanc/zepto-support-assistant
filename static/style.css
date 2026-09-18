@@ -42,6 +42,10 @@ h1 {
     border-radius: 10px;
     max-width: 80%;
     line-height: 1.5;
+    /* Beginner note: word-wrap prevents long strings (like URLs) from
+       overflowing the chat bubble */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .user {
@@ -88,4 +92,11 @@ button {
 
 button:hover {
     background: #14752f;
+}
+
+/* Beginner note: style the disabled state so users know the button
+   is waiting for a response */
+button:disabled {
+    background: #999;
+    cursor: not-allowed;
 }
