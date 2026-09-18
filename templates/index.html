@@ -86,25 +86,43 @@
 
         </main>
 
-        <!-- Input Footer Area -->
-        <footer class="p-3 sm:p-4 bg-base-100 border-t border-base-200">
-            <div class="join w-full shadow-sm">
-                <input
+        <!-- Input Footer Area (Modern AI Chat App Design) -->
+        <footer class="p-3 sm:p-4 bg-base-100 border-t border-base-200/60">
+            <div class="bg-base-200/50 hover:bg-base-200/70 focus-within:bg-base-100 border border-base-300 focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/20 rounded-2xl p-2 sm:p-2.5 transition-all duration-200 shadow-sm">
+                <textarea
                     id="question"
-                    type="text"
-                    placeholder="Ask your question here..."
-                    class="input input-bordered join-item flex-1 focus:outline-none focus:border-primary text-sm bg-base-100"
+                    rows="1"
+                    placeholder="Ask anything about your order, delivery, or returns..."
+                    class="w-full bg-transparent border-0 focus:outline-none focus:ring-0 text-sm text-base-content placeholder:text-base-content/45 resize-none py-1.5 px-2 max-h-32 min-h-[38px] leading-relaxed block"
                     autocomplete="off"
-                />
-                <button id="send-btn" onclick="askQuestion()" class="btn btn-primary join-item gap-2 px-5">
-                    <span>Send</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                    </svg>
-                </button>
+                ></textarea>
+                
+                <div class="flex items-center justify-between pt-1.5 px-1 border-t border-base-content/5 mt-1">
+                    <div class="flex items-center gap-2 text-xs text-base-content/50">
+                        <span class="badge badge-ghost badge-sm gap-1 text-[11px] font-medium py-2 px-2.5 bg-base-100 border-base-300">
+                            <span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+                            AI Agent
+                        </span>
+                        <span class="hidden sm:inline text-[11px] text-base-content/40">
+                            Press Enter ↵ to send &bull; Shift + Enter for new line
+                        </span>
+                    </div>
+
+                    <button
+                        id="send-btn"
+                        onclick="askQuestion()"
+                        class="btn btn-circle btn-primary btn-sm h-8 w-8 min-h-8 shadow-sm transition-all duration-200 disabled:opacity-30 disabled:bg-base-300 disabled:text-base-content/40"
+                        title="Send message"
+                        disabled
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                            <path fill-rule="evenodd" d="M10 17a.75.75 0 0 1-.75-.75V5.612L5.29 9.77a.75.75 0 0 1-1.08-1.04l5.25-5.5a.75.75 0 0 1 1.08 0l5.25 5.5a.75.75 0 1 1-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0 1 10 17Z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
             </div>
             <div class="text-center text-[11px] text-base-content/40 mt-2">
-                Powered by Kie.ai &bull; Zepto Support AI &bull; Press Enter ↵ to send
+                Powered by Kie.ai &bull; Zepto Support AI &bull; Instant Knowledge Grounding
             </div>
         </footer>
 
@@ -142,8 +160,15 @@
             return html;
         }
 
+        function updateSendButton() {
+            const hasText = input.value.trim().length > 0;
+            btn.disabled = !hasText;
+        }
+
         function handleQuickPrompt(text) {
             input.value = text;
+            input.style.height = "auto";
+            updateSendButton();
             askQuestion();
         }
 
@@ -153,6 +178,8 @@
                 chatBox.appendChild(welcomeCard);
             }
             input.value = "";
+            input.style.height = "auto";
+            updateSendButton();
             input.focus();
         }
 
@@ -189,6 +216,8 @@
             `;
             chatBox.appendChild(userMsgEl);
             input.value = "";
+            input.style.height = "auto";
+            updateSendButton();
             chatBox.scrollTop = chatBox.scrollHeight;
 
             // Append Typing Loading Indicator using daisyUI chat-start
@@ -254,22 +283,32 @@
                 chatBox.scrollTop = chatBox.scrollHeight;
                 console.error(error);
             } finally {
-                btn.disabled = false;
                 input.disabled = false;
+                updateSendButton();
                 input.focus();
             }
         }
 
-        // Enter to send
+        // Auto-expand textarea on typing & update button state
+        input.addEventListener("input", function() {
+            this.style.height = "auto";
+            this.style.height = Math.min(this.scrollHeight, 120) + "px";
+            updateSendButton();
+        });
+
+        // Enter to send (Shift + Enter for new line)
         input.addEventListener("keydown", function(event) {
-            if (event.key === "Enter") {
+            if (event.key === "Enter" && !event.shiftKey) {
                 event.preventDefault();
-                askQuestion();
+                if (!btn.disabled) {
+                    askQuestion();
+                }
             }
         });
 
         // Focus input on load
         window.addEventListener("DOMContentLoaded", () => {
+            updateSendButton();
             input.focus();
         });
     </script>
