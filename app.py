@@ -15,7 +15,7 @@ def home():
 @app.route("/ask", methods=["POST"])
 def ask():
 
-    data = request.get_json()
+    data = request.get_json(silent=True)
 
     # Validate input — beginner note: always check user input before using it
     if not data or "question" not in data:
@@ -26,19 +26,25 @@ def ask():
     if not isinstance(question, str) or not question.strip():
         return jsonify({"error": "'question' must be a non-empty string"}), 400
 
+    clean_question = question.strip()
+
     try:
         result = graph.invoke({
-            "question": question.strip(),
+            "question": clean_question,
             "intent": "",
             "answer": ""
         })
+        answer = result.get("answer") or "I could not generate an answer at this time."
     except Exception as e:
-        logger.error(f"Graph invoke failed: {e}")
-        return jsonify({"error": "Internal server error"}), 500
+        logger.error("Graph invoke failed: %s", e, exc_info=True)
+        return jsonify({
+            "error": str(e),
+            "answer": "Sorry, an internal error occurred while generating the answer."
+        }), 500
 
     return jsonify({
-        "question": question,
-        "answer": result["answer"]
+        "question": clean_question,
+        "answer": answer
     })
 
 

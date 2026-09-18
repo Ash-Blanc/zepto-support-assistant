@@ -84,11 +84,13 @@
             const data = await response.json();
 
             // Replace Thinking with actual answer
-            loading.innerHTML = "<b>Assistant:</b> " + escapeHtml(data.answer);
+            loading.innerHTML = "<b>Assistant:</b> " + escapeHtml(data.answer || "No response received.");
+            chatBox.scrollTop = chatBox.scrollHeight;
 
         } catch (error) {
 
-            loading.innerHTML = "<b>Assistant:</b> Sorry, something went wrong.";
+            loading.innerHTML = "<b>Assistant:</b> " + escapeHtml(error.message || "Sorry, something went wrong.");
+            chatBox.scrollTop = chatBox.scrollHeight;
 
             console.error(error);
         } finally {
